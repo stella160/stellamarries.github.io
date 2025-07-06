@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stella Marries | Data Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #f8f9fa;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        /* Header */
+        
+        #header {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/api/placeholder/1200/800) no-repeat center center/cover;
+            color: #fff;
+            position: relative;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 25px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .logo span {
+            color: #ff2d55;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            position: relative;
+            transition: 0.3s;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #ff2d55;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: 0.3s;
+        }
+        
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #ff2d55;
+        }
+        
+        nav .fas {
+            display: none;
+        }
+        
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+        }
+        
+        .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .header-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        
+        .highlight {
+            color: #ff2d55;
+        }
+        
+        .header-btns {
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        .primary-btn {
+            background: #ff2d55;
+            color: #fff;
+            border: 2px solid #ff2d55;
+        }
+        
+        .primary-btn:hover {
+            background: transparent;
+            color: #ff2d55;
+        }
+        
+        .secondary-btn {
+            background: transparent;
+            color: #ff2d55;
+            border: 2px solid #ff2d55;
+        }
+        
+        .secondary-btn:hover {
+            background: #ff2d55;
+            color: #fff;
+        }
+        
+        .social-icons {
+            margin-top: 30px;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #ff2d55;
+            transform: translateY(-5px);
+        }
+        /* About */
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .about-col-1 {
+            flex-basis: 35%;
+        }
+        
+        .about-col-1 img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-col-2 {
+            flex-basis: 60%;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: #ff2d55;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+        }
+        
+        .about-col-2 p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .tab-titles {
+            display: flex;
+            margin: 40px 0 20px;
+        }
+        
+        .tab-link {
+            margin-right: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            color: #ddd;
+        }
+        
+        .tab-link::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #ff2d55;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.3s;
+        }
+        
+        .tab-link.active-tab::after {
+            width: 100%;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active-content {
+            display: block;
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .tab-content ul li {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        .tab-content ul li span {
+            color: #ff2d55;
+            font-weight: 600;
+        }
+        /* Skills */
+        
+        #skills {
+            background: #121212;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            color: #aaa;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 30px;
+        }
+        
+        .skill-card {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .skill-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ff2d55;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        /* Projects */
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .project-card {
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .layer {
+            width: 100%;
+            height: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), #ff2d55);
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            text-align: center;
+            color: #fff;
+            transition: height 0.5s;
+        }
+        
+        .project-card:hover .layer {
+            height: 100%;
+        }
+        
+        .layer h3 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .layer p {
+            margin-bottom: 15px;
+        }
+        
+        .layer a {
+            margin-top: 20px;
+            color: #ff2d55;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 60px;
+            background: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .layer a:hover {
+            transform: scale(1.1);
+        }
+        
+        .view-more {
+            display: block;
+            margin: 30px auto 0;
+            width: fit-content;
+        }
+        /* Certifications */
+        
+        #certifications {
+            background: #121212;
+        }
+        
+        .certifications-list {
+            margin-top: 50px;
+        }
+        
+        .certification-item {
+            display: flex;
+            align-items: flex-start;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+        }
+        
+        .certification-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .cert-icon {
+            color: #ff2d55;
+            font-size: 36px;
+            margin-right: 30px;
+        }
+        
+        .cert-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .cert-date {
+            color: #ff2d55;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        /* Contact */
+        
+        .contact-left {
+            flex-basis: 35%;
+        }
+        
+        .contact-right {
+            flex-basis: 60%;
+        }
+        
+        .contact-left p {
+            margin-top: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-left p i {
+            color: #ff2d55;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .btn-download {
+            display: inline-block;
+            margin-top: 30px;
+            background: #ff2d55;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .btn-download:hover {
+            background: transparent;
+            color: #ff2d55;
+            border: 1px solid #ff2d55;
+        }
+        
+        form {
+            width: 100%;
+        }
+        
+        form input,
+        form textarea {
+            width: 100%;
+            border: 0;
+            outline: none;
+            background: #1a1a1a;
+            padding: 15px;
+            margin: 15px 0;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+        
+        #msg {
+            color: #4dff88;
+            margin-top: 20px;
+            display: block;
+        }
+        /* Footer */
+        
+        footer {
+            background: #0a0a0a;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #222;
+        }
+        /* Media Query */
+        
+        @media only screen and (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            .header-content h2 {
+                font-size: 1.5rem;
+            }
+            nav .fas {
+                display: block;
+                font-size: 25px;
+                cursor: pointer;
+                color: #fff;
+            }
+            nav ul {
+                background: #1a1a1a;
+                position: fixed;
+                top: 0;
+                right: -200px;
+                width: 200px;
+                height: 100vh;
+                padding-top: 50px;
+                z-index: 2;
+                flex-direction: column;
+                transition: right 0.5s;
+            }
+            nav ul li {
+                margin: 25px;
+            }
+            nav ul .fas {
+                position: absolute;
+                top: 25px;
+                left: 25px;
+            }
+            .about-col-1,
+            .about-col-2,
+            .contact-left,
+            .contact-right {
+                flex-basis: 100%;
+                margin-bottom: 30px;
+            }
+            .about-col-1 {
+                margin-bottom: 30px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .tab-link {
+                margin-right: 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#header" class="logo">Stella<span>Marries</span></a>
+                <ul id="sidemenu">
+                    <li><a href="#header" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" id="close-menu"></i>
+                </ul>
+                <i class="fas fa-bars" id="open-menu"></i>
+            </nav>
+            <div class="header-content">
+                <h1>Hi, I'm <span class="highlight">Stella Marries</span></h1>
+                <h2>Data Analyst</h2>
+                <p>Transforming raw data into actionable business insights</p>
+                <div class="header-btns">
+                    <a href="#projects" class="btn primary-btn">View My Work</a>
+                    <a href="#contact" class="btn secondary-btn">Get In Touch</a>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/stellamarries-syombua-59151a260/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/stella160"><i class="fab fa-github"></i></a>
+                    <a href="https://medium.com/@stellamarriessyombua"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="/api/placeholder/400/500" alt="Stella Marries">
+                </div>
+                <div class="about-col-2">
+                    <h2 class="section-title">About Me</h2>
+                    <p>I'm a data analyst passionate about extracting meaningful insights from complex datasets. With expertise in data collection, cleaning, and analysis, I transform raw information into powerful business intelligence that drives decision-making.</p>
+                    <p>My analytical approach combines statistical methods with creative problem-solving to uncover patterns and trends that might otherwise remain hidden. I specialize in R, Python, SQL, data visualization, and have a growing interest in
+                        predictive modeling using machine learning techniques.</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-link active-tab" data-tab="skills">Skills</p>
+                        <p class="tab-link" data-tab="experience">Experience</p>
+                        <p class="tab-link" data-tab="education">Education</p>
+                    </div>
+
+                    <div class="tab-content active-content" id="skills-tab">
+                        <ul>
+                            <li><span>Data Analysis</span><br>Advanced data exploration and statistical analysis</li>
+                            <li><span>SQL</span><br>Complex queries, database optimization, and data extraction</li>
+                            <li><span>Data Visualization</span><br>Tableau, Power BI, and custom visualizations</li>
+                            <li><span>Programming</span><br>Python (Pandas, NumPy, Matplotlib, Scikit-learn)</li>
+                            <li><span>Machine Learning</span><br>Predictive modeling and statistical forecasting</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content active-content" id="experience-tab">
+                        <ul>
+                            <li><span>2024 July - Present</span><br>Research Intern at AMREC</li>
+                            <li><span>2023 May - 2023 August</span><br>Data Analyst at Yemaachi Biotech</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content" id="education-tab">
+                        <ul>
+                            <li><span>2019</span><br>Bachelor's in Biostatistics - Jomo Kenyatta University of Agriculture and Technology</li>
+                            <li><span>Continuous</span><br>Professional development through specialized courses and certifications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <p class="section-subtitle">My technical toolkit</p>
+
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Collection & Management</h3>
+                    <p>Proficient in gathering data from various sources including databases, APIs, and surveys. Expert in designing data collection methodologies and implementing ETL processes.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>SQL & Database</h3>
+                    <p>Advanced SQL querying capabilities across multiple database systems. Experience with complex joins, subqueries, window functions, and database optimization techniques.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Data Visualization</h3>
+                    <p>Creating impactful visualizations using Tableau, Power BI, Python and R libraries. Skilled in developing interactive dashboards that communicate insights effectively.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Predictive Analytics</h3>
+                    <p>Implementing machine learning models for forecasting and prediction. Experience with regression, classification, clustering, and time-series analysis.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3>Programming</h3>
+                    <p>Proficient in Python for data analysis using libraries like Pandas, NumPy, and Scikit-learn. Experience with R for statistical analysis and visualization.</p>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Communication</h3>
+                    <p>Translating complex analytical findings into actionable insights for stakeholders. Creating clear reports and presentations that drive decision-making.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <p class="section-subtitle">Recent data analysis work</p>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="/api/placeholder/400/300" alt="Retail Sales Analysis">
+                    <div class="layer">
+                        <h3>Retail Sales Analysis Dashboard</h3>
+                        <p>Developed an interactive dashboard analyzing sales trends across regions, identifying key growth opportunities that increased revenue by 15%.</p>
+                        <p><strong>Tools:</strong> Tableau, SQL, Excel</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="/api/placeholder/400/300" alt="Customer Segmentation">
+                    <div class="layer">
+                        <h3>Customer Segmentation Model</h3>
+                        <p>Created a machine learning model to segment customers based on purchasing behavior, enabling targeted marketing campaigns with 30% higher engagement.</p>
+                        <p><strong>Tools:</strong> Python (Scikit-learn), SQL, Matplotlib</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="/api/placeholder/400/300" alt="Predictive Maintenance">
+                    <div class="layer">
+                        <h3>Predictive Maintenance System</h3>
+                        <p>Built a predictive model to forecast equipment failures, reducing downtime by 25% and maintenance costs by $300K annually.</p>
+                        <p><strong>Tools:</strong> Python, SQL, Time-series forecasting</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="/api/placeholder/400/300" alt="Market Basket Analysis">
+                    <div class="layer">
+                        <h3>Market Basket Analysis</h3>
+                        <p>Conducted association rule mining to discover product affinities, improving cross-sell recommendations that increased average order value by 12%.</p>
+                        <p><strong>Tools:</strong> R, SQL, Power BI</p>
+                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" class="btn primary-btn view-more">View More Projects</a>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <p class="section-subtitle">Professional achievements</p>
+
+            <div class="certifications-list">
+                <div class="certification-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-info">
+                        <h3>Microsoft Certified: Data Analyst Associate</h3>
+                        <p class="cert-date">January 2023</p>
+                        <p>Validation of skills in preparing, modeling, visualizing, and analyzing data using Microsoft Power BI.</p>
+                    </div>
+                </div>
+
+                <div class="certification-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-info">
+                        <h3>Google Data Analytics Professional Certificate</h3>
+                        <p class="cert-date">August 2022</p>
+                        <p>Comprehensive training in data analysis, including SQL, R programming, and data visualization.</p>
+                    </div>
+                </div>
+
+                <div class="certification-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-info">
+                        <h3>Tableau Desktop Specialist</h3>
+                        <p class="cert-date">March 2022</p>
+                        <p>Certification demonstrating proficiency in Tableau Desktop for data visualization and analysis.</p>
+                    </div>
+                </div>
+
+                <div class="certification-item">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-info">
+                        <h3>SQL Advanced Certification</h3>
+                        <p class="cert-date">October 2021</p>
+                        <p>Mastery of advanced SQL concepts including complex joins, window functions, and query optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h2 class="section-title">Contact Me</h2>
+                    <p><i class="fas fa-paper-plane"></i> stellamarriessyombua@gmail.com</p>
+                    <p><i class="fas fa-phone-alt"></i> +254742485933</p>
+
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/stellamarries-syombua-59151a260/"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/stella160"><i class="fab fa-github"></i></a>
+                        <a href="https://medium.com/@stellamarriessyombua"><i class="fab fa-medium"></i></a>
+                    </div>
+
+                    <a href="#" class="btn btn-download">Download CV</a>
+                </div>
+
+                <div class="contact-right">
+                    <form name="contactForm" id="contactForm">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn primary-btn">Send Message</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Stella Marries. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle menu
+        const sideMenu = document.getElementById('sidemenu');
+        const openMenu = document.getElementById('open-menu');
+        const closeMenu = document.getElementById('close-menu');
+
+        openMenu.addEventListener('click', () => {
+            sideMenu.style.right = '0';
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sideMenu.style.right = '-200px';
+        });
+
+        // Close menu when clicking a link
+        const menuLinks = document.querySelectorAll('#sidemenu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                sideMenu.style.right = '-200px';
+            });
+        });
+
+        // Add active class to nav items on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Tab switching
